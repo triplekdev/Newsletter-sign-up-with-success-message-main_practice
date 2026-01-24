@@ -35,14 +35,16 @@
 		--FS-28: calc(28 / 16 * 1rem);
 		--FS-38: calc(38 / 16 * 1rem);
 		--FS-42: calc(42 / 16 * 1rem);
+		--FS-52: calc(52 / 16 * 1rem);
 		
 		--FS-PARAGRAPH: var(--FS-18);
 		--FS-H3: var(--FS-17);
 		--FS-TITLE: var(--FS-42);
-		--FS-EMAIL: var(--FS-12);
+		--FS-EMAIL: var(--FS-14);
 		
 		@media (width >=calc(600 / 16 * 1rem)) {
-			--FS-PARAGRAPH: var(--FS-16);
+			--FS-TITLE: var(--FS-52);
+					--FS-PARAGRAPH: var(--FS-16);
 		}
 		
 		/* || COLORS */
@@ -111,26 +113,52 @@
 
 @layer component {
 	.main {
-		max-width: calc(100% - calc(48 / 16 * 1rem));
+		max-width: calc(100% - calc(60 / 16 * 1rem));
 		display: flex;
 		flex-flow: column;
 		justify-content: center;
 		gap: calc(10 / 16 * 1rem);
 		background: var(--C-MAIN-BG);
-
-		.main__img-wrapper {
-			max-width: 100%;
+		
+		@media (width >=calc(600 / 16 * 1rem)) {
+			flex-flow: row-reverse;
+			padding: 15px 10px;
+			align-items: center;
+			max-width: calc(830 / 16 * 1rem);
+			border-radius: 30px;
+			gap: calc(20 / 16 * 1rem);
 		}
 		
-		.images {}
+		.main__img-wrapper {
+			max-width: 100%;
+			
+			@media (width >=calc(600 / 16 * 1rem)) {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				max-width: 45%;
+				min-height: 100%;
+			}
+		}
 		
-		.main__img {
+		picture img {
+			
 			width: 100%;
 			margin-bottom: calc(20 / 16 * 1rem);
+			
+			@media (width >=calc(600 / 16 * 1rem)) {
+				width: 100%;
+				margin: 0;
+				border-radius: 20px;
+				height: 530px;
+				object-fit: cover;
+				object-position: center;
+			}
 		}
 		
 		.main-content {
 			padding-inline: calc(30 / 16 * 1rem);
+			max-width: calc(390 / 16 * 1rem);
 		}
 		
 		.signup {}
@@ -163,6 +191,10 @@
 			margin-bottom: calc(20 / 16 * 1rem);
 			padding: 0 calc(10 / 16 * 1rem) 0 calc(35 / 16 * 1rem);
 			position: relative;
+			
+			@media (width >=calc(600 / 16 * 1rem)) {
+				font-size: var(--FS-16);
+			}
 			
 			&::before {
 				content: url('images/icon-list.svg');
