@@ -9,7 +9,7 @@
   
   <title>Frontend Mentor | Newsletter sign-up form with success message</title>
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" charset="utf-8"></script>
+  <script src="script.js" charset="utf-8" defer></script>
 </head>
 
 <body>
@@ -18,14 +18,13 @@
       <figure>
         <picture class="images">
           <source srcset="/images/illustration-sign-up-desktop.svg" media="(min-width: 600px)" width="300px" height="400px">
-<!--           <source srcset="/images/illustration-sign-up-tablet.svg" media="(min-width: 600px)" width="300px" height="400px"> -->
           <img src="images/illustration-sign-up-mobile.svg" width="300px" height="400px" alt="main image" class="main__img">
         </picture>
       </figure>
     </section>
     
     <section class="main-content">
-      <form action="" class="signup">
+      <form action="" novalidate id="mainform" class="signup">
         <div class="text">
           <header>
             <h1 class="heading">Stay updated!</h1>
@@ -39,21 +38,33 @@
         </div>
         
         <label for="email">Email address</label>
-        <input type="email" id="email" class="email" placeholder="email@company.com">
+        <div class="input">
+          <input type="email" id="email" class="email" required placeholder="email@company.com">
+          <p class="errors"></p>
+        </div>
+
         
-        <button type="submit" class="subscribe">Subscribe to monthly newsletter
+        <button type="submit" id="btn" class="subscribe">Subscribe to monthly newsletter
         </button>
       </form>
     </section>
   </main>
-  
-  
-  <!--   Thanks for subscribing!
+  <template id="success-template">
+      <main class="success-section">
+        <img src="images/icon-success.svg" alt="Success" width="20px" height="20px" class="success">
+        <div class="success-msg">
+          <h1 class="header">Thanks for subscribing!</h1>
+          <p class="done">A confirmation email has been sent to <span class="user-email">ash@loremcompany.com.</span>Please open it and click the button inside to confirm your subscription.</p>
+        </div>
+        <button class="dismiss" onclick="location.reload()">Dismiss message</button>
+      </main>
+  </template>
+  <!--   
 
-A confirmation email has been sent to ash@loremcompany.com.
-Please open it and click the button inside to confirm your subscription.
+ 
 
-Dismiss message -->
+
+ -->
   
   <!-- Success message end -->
   
