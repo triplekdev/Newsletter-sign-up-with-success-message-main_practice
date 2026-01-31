@@ -124,10 +124,10 @@
 		
 		@media (width >=calc(600 / 16 * 1rem)) {
 			flex-flow: row-reverse;
-			padding: 15px 10px;
+			padding: calc(15 / 16 * 1rem) calc(10 / 16 * 1rem);
 			align-items: center;
-			max-width: calc(830 / 16 * 1rem);
-			border-radius: 30px;
+			max-width: calc(810 / 16 * 1rem);
+			border-radius: calc(30 / 16 * 1rem);
 			gap: calc(20 / 16 * 1rem);
 		}
 		
@@ -151,8 +151,8 @@
 			@media (width >=calc(600 / 16 * 1rem)) {
 				width: 100%;
 				margin: 0;
-				border-radius: 20px;
-				height: 530px;
+				border-radius: calc(20 / 16 * 1rem);
+				height: calc(600 / 16 * 1rem);
 				object-fit: cover;
 				object-position: center;
 			}
@@ -201,8 +201,8 @@
 			&::before {
 				content: url('images/icon-list.svg');
 				position: absolute;
-				left: 1px;
-				top: -2px;
+				left: calc(1 / 16 * 1rem);
+				top: -calc(2 / 16 * 1rem);
 			}
 		}
 		
@@ -213,7 +213,7 @@
 		}
 		
 		.input {
-			margin: calc(10 / 16 * 1rem) 0 calc(25 / 16 * 1rem) 0;
+			margin: calc(5 / 16 * 1rem) 0 calc(25 / 16 * 1rem) 0;
 		}
 		
 		.email {
@@ -221,7 +221,7 @@
 			padding: calc(15 / 16 * 1rem);
 			font-size: var(--FS-18);
 			border-radius: calc(7 / 16 * 1rem);
-			border: 1px solid var(--C-Grey);
+			border: calc(1 / 16 * 1rem) solid var(--C-Grey);
 			outline: none;
 			
 			&::placeholder {
@@ -235,7 +235,7 @@
 			}
 			
 			&:invalid {
-				border: 2px solid red;
+				border: calc(2 / 16 * 1rem) solid red;
 				outline: none;
 			}
 		}
@@ -251,13 +251,27 @@
 			font-weight: 700;
 			padding: calc(17 / 16 * 1rem);
 			margin: 0 auto calc(30 / 16 * 1rem) auto;
+			
+				@media (width >=calc(600 / 16 * 1rem)) {
+					&:hover {
+				cursor: pointer;
+			}
+	}
+			
+			&:hover,
+			:focus {
+				background: linear-gradient(to right, #FF527B, #FF6A3A);
+				box-shadow: 0 calc(10 / 16 * 1rem) calc(20 / 16 * 1rem) 0 #A8A8A8;
+				transition: all 0.3s ease-in;
+				cursor: pointer;
+			}
 		}
 	}
 	
 	.errors {
 		color: red;
-		margin-top: 5px;
-		font-size: 14px;
+		margin-top: calc(5 / 16 * 1rem);
+		font-size: var(--FS-14);
 	}
 	
 	.shake {
@@ -296,22 +310,23 @@
 		justify-content: center;
 		gap: calc(10 / 16 * 1rem);
 		background: var(--C-MAIN-BG);
-		box-shadow: 0 10px 29px 0px var(--C-BLUE-800);
+		box-shadow: 0 calc(10 / 16 * 1rem) calc(29 / 16 * 1rem) 0 var(--C-BLUE-800);
 		
 		@media (width >=calc(600 / 16 * 1rem)) {
 			max-width: calc(490 / 16 * 1rem);
-			padding: calc(10 / 16 * 1rem) calc(55 / 16 * 1rem) ;
-			max-height: 530px;
-			border-radius: 40px;
+			padding: calc(10 / 16 * 1rem) calc(55 / 16 * 1rem);
+			max-height: calc(530 / 16 * 1rem);
+			border-radius: calc(40 / 16 * 1rem);
 			gap: calc(20 / 16 * 1rem);
 		}
 		
 		.success {
-			width: 70px;
-			margin-block: 140px 30px;
-				@media (width >=calc(600 / 16 * 1rem)) {
-			margin-block: 5px 20px;
-		}
+			width: calc(70 / 16 * 1rem);
+			margin-block: calc(140 / 16 * 1rem) calc(30 / 16 * 1rem);
+			
+			@media (width >=calc(600 / 16 * 1rem)) {
+				margin-block: calc(5 / 16 * 1rem) calc(20 / 16 * 1rem);
+			}
 		}
 		
 		.success-msg {
@@ -320,12 +335,12 @@
 			flex-flow: column;
 			gap: calc(20 / 16 * 1rem);
 			font-weight: 400;
-			padding-right: 20px;
+			padding-right: calc(20 / 16 * 1rem);
 			margin-bottom: calc(250 / 16 * 1rem);
-				
+			
 			@media (width >=calc(600 / 16 * 1rem)) {
-			margin-bottom: calc(25 / 16 * 1rem);
-		}
+				margin-bottom: calc(25 / 16 * 1rem);
+			}
 		}
 		
 		.header {
@@ -351,16 +366,22 @@
 			font-weight: 700;
 			background: var(--C-BUTTON-BG);
 			border: none;
-			border-radius: 10px;
+			border-radius: calc(10 / 16 * 1rem);
 			padding: calc(20 / 16 * 1rem) calc(30 / 16 * 1rem);
 			margin: 0;
 			
-				@media (width >=calc(600 / 16 * 1rem)) {
-			margin-bottom: calc(20 / 16 * 1rem);
-		}
-			&:hover,:focus {
+			@media (width >=calc(600 / 16 * 1rem)) {
+				margin-bottom: calc(20 / 16 * 1rem);
+
+				&:hover {
+					cursor: pointer;
+				}
+			}
+			
+			&:hover,
+			:focus {
 				background: linear-gradient(to right, #FF527B, #FF6A3A);
-				box-shadow: 0 10px 20px 0px #A8A8A8;
+				box-shadow: 0 calc(10 / 16 * 1rem) calc(20 / 16 * 1rem) 0 #A8A8A8;
 				transition: all 0.3s ease-in;
 				cursor: pointer;
 			}
@@ -393,8 +414,9 @@
 	}
 	
 	.footer {
-		position: absolute;
+		position: fixed;
 		bottom: 0;
+		color: #fff;
 		
 		.attribution {
 			font-size: 11px;
@@ -402,7 +424,7 @@
 		}
 		
 		.attribution a {
-			color: hsl(228, 45%, 44%);
+			color: hsla(228, 88%, 53%, 1)
 		}
 	}
 }

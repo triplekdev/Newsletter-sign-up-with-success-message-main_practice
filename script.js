@@ -9,11 +9,10 @@ const emailInput = document.getElementById("email");
 const form = document.getElementById("mainform");
 const errors = document.querySelector(".errors");
 
-// 1. Handle form submission separately
+
 form.addEventListener('submit', (event) => {
     const emailval = emailInput.value;
-    // Simple check: if there are any capital letters or spaces, stop the form
-    if (/[A-Z\s]/.test(emailval) || !emailval.includes('@')) {
+    if (/[A-Z]/.test(emailval) || !emailval.includes('@')) {
         event.preventDefault();
         emailInput.classList.add('shake')
         emailInput.placeholder = 'Enter an email...'
@@ -27,12 +26,11 @@ form.addEventListener('submit', (event) => {
         const clone = template.content.cloneNode(true);
         clone.querySelector('.user-email').textContent = emailval + '. ';
         
-        container.innerHTML = ''; 
-    container.appendChild(clone);
+        container.innerHTML = '';
+        container.appendChild(clone);
     }
 });
 
-// 2. Handle live validation
 emailInput.addEventListener('input', () => {
     // CRITICAL: Get the CURRENT value inside the listener
     const emailval = emailInput.value;
@@ -50,11 +48,10 @@ emailInput.addEventListener('input', () => {
         test: (val) => {
             const parts = val.split('@');
             if (parts.length < 2) return false; // Let the '@' rule handle this
-            
             const domain = parts[1];
             const domainParts = domain.split('.');
             const tld = domainParts[domainParts.length - 1];
-            
+            console.log(tld)
             return !domain.includes('.') ||
                 domain.startsWith('.') ||
                 domain.endsWith('.') ||
@@ -74,9 +71,13 @@ emailInput.addEventListener('input', () => {
     if (activeErrors.length > 0) {
         // Map the messages and join them with a break or comma 
         // so you see ALL of them, not just the last one.
+        
+        subscribe.disabled = true
         errors.innerText = activeErrors.map(err => err.message).join(" ");
     } else {
         // If no errors, clear the text
+        subscribe.disabled = false
         errors.innerText = 'Email is valid✅';
     }
 });
+
