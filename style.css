@@ -317,7 +317,7 @@
 			padding: calc(10 / 16 * 1rem) calc(55 / 16 * 1rem);
 			max-height: calc(530 / 16 * 1rem);
 			border-radius: calc(40 / 16 * 1rem);
-			gap: calc(20 / 16 * 1rem);
+			gap: calc(10 / 16 * 1rem);
 		}
 		
 		.success {

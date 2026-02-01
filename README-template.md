@@ -56,43 +56,119 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
-- CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+I learnt a lot of things which I'll list below 👇 
+- Usage of arrays and objects 
+- Understanding the DOM better 
+- Finding out how forms work and creating my own validation rules
+- Use of Regular Expressions (regex)
+- How to create a new page after submission using the template element 
+- Designing with the Mobile-first workflow
+- Error identification and debugging 
+- Effective usage of media queries 
+- Little yet adequate use of animations
 
 To see how you can add code snippets, see below:
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
+  <template id="success-template">
+      <main class="success-section">
+        <img src="images/icon-success.svg" alt="Success" width="20px" height="20px" class="success">
+        <div class="success-msg">
+          <h1 class="header">Thanks for subscribing!</h1>
+          <p class="done">A confirmation email has been sent to <span class="user-email">ash@loremcompany.com.</span>Please open it and click the button inside to confirm your subscription.</p>
+        </div>
+        <button class="dismiss" onclick="location.reload()">Dismiss message</button>
+      </main>
+  </template>
 ```
 ```css
-.proud-of-this-css {
-  color: papayawhip;
-}
+	.shake {
+		animation: shake 0.8s ease-in-out;
+	}
+	
+	@keyframes shake {
+		0% {
+			transform: translateX(-5px);
+		}
+		
+		25% {
+			transform: translateX(5px);
+		}
+		
+		50% {
+			transform: translateX(-5px);
+		}
+		
+		75% {
+			transform: translateX(5px);
+		}
+		
+		100% {
+			transform: translateX(0px);
+		}
+	}
 ```
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+emailInput.addEventListener('input', () => {
+    // CRITICAL: Get the CURRENT value inside the listener
+    const emailval = emailInput.value;
+    
+    const validationRules = [
+    {
+        test: (val) => /\s/.test(val),
+        message: "Email cannot contain spaces."
+    },
+    {
+        test: (val) => !val.includes('@'),
+        message: "Email must contain an '@' symbol."
+    },
+    {
+        test: (val) => {
+            const parts = val.split('@');
+            if (parts.length < 2) return false; // Let the '@' rule handle this
+            const domain = parts[1];
+            const domainParts = domain.split('.');
+            const tld = domainParts[domainParts.length - 1];
+            console.log(tld)
+            return !domain.includes('.') ||
+                domain.startsWith('.') ||
+                domain.endsWith('.') ||
+                tld.length < 2;
+        },
+        message: "Email must have a valid domain extension (e.g., .com or .io)."
+    },
+    {
+        test: (val) => /[A-Z]/.test(val),
+        message: "Email should not have capital letters."
+    }];
+    
+    // Filter rules that return true (the "active" errors)
+    const activeErrors = validationRules.filter(rule => rule.test(emailval));
+    
+    // 3. Output the results
+    if (activeErrors.length > 0) {
+        // Map the messages and join them with a break or comma 
+        // so you see ALL of them, not just the last one.
+        
+        subscribe.disabled = true
+        errors.innerText = activeErrors.map(err => err.message).join(" ");
+    } else {
+        // If no errors, clear the text
+        subscribe.disabled = false
+        errors.innerText = 'Email is valid✅';
+    }
+});
 ```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+Looking for better ways to display errors to the user than the method I used
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+
 
 ### Useful resources
 
@@ -103,14 +179,6 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Github - [Triple K](https://github.com/triplekdev)
+- Frontend Mentor - [@triplekdev](https://www.frontendmentor.io/profile/triplekdev)
+- Twitter - [@3plkk](https://x.com/3plkk)
